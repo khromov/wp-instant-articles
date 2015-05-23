@@ -1,1 +1,0 @@
-See free and pro branches.
