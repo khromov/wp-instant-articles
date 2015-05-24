@@ -27,12 +27,24 @@ class WPInstantArticles_Plugin {
 
 		$modules_directory = plugin_dir_path(__FILE__) . 'modules/';
 
+		/**
+		 * Load modules
+		 */
 		foreach($modules as $module_file => $module_class) {
 			if(file_exists("{$modules_directory}{$module_file}.php")) {
 				require "{$modules_directory}{$module_file}.php";
 				$this->modules[$module_file] = new $module_class();
 			}
 		}
+
+		//FIXME: Which hook?
+		add_action('plugins_loaded', array(&$this, 'load_admin_interface'));
+	}
+
+	function load_admin_interface() {
+		require_once plugin_dir_path(__FILE__) . 'libraries/cmb2/init.php';
+		require_once plugin_dir_path(__FILE__) . 'admin/demo.php';
+		require_once plugin_dir_path(__FILE__) . 'admin/adminpage.php';
 	}
 }
 $wp_instant_articles = new WPInstantArticles_Plugin();

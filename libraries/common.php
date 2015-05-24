@@ -61,3 +61,16 @@ class WPInstantArticles_Common {
 		}
 	}
 }
+
+/**
+ * Shorter class for  helpers
+ * TODO: Maybe just rename the other class and save this hassle
+ *
+ * Class WPAC
+ */
+class WPSubitoC {
+	static function __call($method, $args) {
+		forward_static_call('');
+		WPInstantArticles_Common::$method($args);
+	}
+}
