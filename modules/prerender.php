@@ -5,6 +5,7 @@
  * Sources:
  * https://www.igvita.com/2011/06/25/html5-visibility-api-page-pre-rendering/
  * https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ
+ * http://www.sutanaryan.com/preload-pages-or-posts-in-wordpress-using-html5-link-prefetching/
  *
  * Class WPInstantArticles_PreRender
  */
@@ -15,7 +16,8 @@ class WPInstantArticles_PreRender {
 
 	function _init() {
 		add_action('wp_head', array(&$this, '_prerender_latest_posts'), 11);
-		add_action('wp_head', array(&$this, '_prerender_next_previous'), 12);
+		add_action('wp_head', array(&$this, '_prerender_next_previous_archive'), 12);
+		add_action('wp_head', array(&$this, '_prerender_next_previous_single'), 12);
 	}
 
 	/**
@@ -43,7 +45,7 @@ class WPInstantArticles_PreRender {
 			$posts_to_prerender = $latest_posts_query->posts;
 		}
 		else if(is_archive()) { //FIXME: Premium only?
-			
+
 		}
 
 		$urls = array();
@@ -57,7 +59,7 @@ class WPInstantArticles_PreRender {
 	/**
 	 * Prerender next/previous links.
 	 */
-	function _prerender_next_previous() {
+	function _prerender_next_previous_archive() {
 		$urls = array();
 		$next_posts_url = $this->get_next_posts_url();
 		$previous_posts_url = $this->get_previous_posts_url();
@@ -71,6 +73,29 @@ class WPInstantArticles_PreRender {
 		}
 
 		$this->print_prerender_markup($urls);
+	}
+
+	/**
+	 * Prerender next/previous links for single pages
+	 */
+	function _prerender_next_previous_single() {
+		if(is_singular()) {
+			// get previous post permalink
+			$prev_post = get_adjacent_post(false, apply_filters('wpinstant_adjacent_post_excluded_terms', ''), false, apply_filters('wpinstant_adjacent_post_taxonomy', 'category'));
+			// get next post permalink
+			$next_post = get_adjacent_post(false, apply_filters('wpinstant_adjacent_post_excluded_terms', ''), true, apply_filters('wpinstant_adjacent_post_taxonomy', 'category'));
+
+			$urls = array();
+			if($prev_post) {
+				$urls[] = get_permalink($prev_post);
+			}
+
+			if($next_post) {
+				$urls[] = get_permalink($next_post);
+			}
+
+			$this->print_prerender_markup($urls);
+		}
 	}
 
 	/**
