@@ -7,3 +7,12 @@ Version: 1.0
 Author: khromov
 Author URI: https://khromov.se
 */
+
+require 'modules/dns-prefetch.php';
+
+$wp_instant_articles_modules = array();
+$wp_instant_articles_modules['dns-prefetch'] = new WPInstantArticles_DNS_Prefetch();
+
+add_filter('wpinstant_dns_prefetch_domains', function($domains) {
+	return array('//google.com', '//aftonbladet.se', 'http://reddit.com');
+});
