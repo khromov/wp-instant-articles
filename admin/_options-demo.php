@@ -3,8 +3,8 @@
  * CMB2 Theme Options
  * @version 0.1.0
  */
-//FIXME: Into src/ you go!
-class Myprefix_Admin {
+
+class WPInstantArticles_Admin {
 
 	/**
 	 * Option key, and option page slug
@@ -34,7 +34,7 @@ class Myprefix_Admin {
 	 * Constructor
 	 * @since 0.1.0
 	 */
-	public function __construct() {
+	public function  __construct() {
 		// Set our title
 		$this->title = __( 'Subito', 'myprefix' );
 	}
@@ -268,7 +268,7 @@ class Myprefix_Admin {
 function myprefix_admin() {
 	static $object = null;
 	if ( is_null( $object ) ) {
-		$object = new Myprefix_Admin();
+		$object = new WPInstantArticles_Admin();
 		$object->hooks();
 	}
 

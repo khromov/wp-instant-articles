@@ -1,5 +1,8 @@
 <?php
 class WPInstantArticles_Common {
+
+	const TD = 'wpinstant';
+
 	/**
 	 * Reused from get_next_posts_link
 	 *
@@ -60,17 +63,16 @@ class WPInstantArticles_Common {
 			echo '<link rel="prerender" href="'. $url .'"/>';
 		}
 	}
+
+	static function cmb2_get_option($group, $key, $default = null) {
+		$group_values = get_option($group);
+		return isset($group_values[$key]) ? $group_values[$key] : $default;
+	}
 }
 
 /**
- * Shorter class for  helpers
- * TODO: Maybe just rename the other class and save this hassle
+ * Class WPIAC - WP Instant Articles Common
  *
- * Class WPAC
+ * Provides a shorter name to access WPInstantArticles_Common functions
  */
-class WPSubitoC {
-	static function __call($method, $args) {
-		forward_static_call('');
-		WPInstantArticles_Common::$method($args);
-	}
-}
+class WPIAC extends WPInstantArticles_Common {}

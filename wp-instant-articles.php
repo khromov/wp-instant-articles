@@ -38,20 +38,31 @@ class WPInstantArticles_Plugin {
 		}
 
 		//FIXME: Which hook?
-		add_action('plugins_loaded', array(&$this, 'load_admin_interface'));
+		add_action('init', array(&$this, 'load_admin_interface'));
 	}
 
 	function load_admin_interface() {
 		require_once plugin_dir_path(__FILE__) . 'libraries/cmb2/init.php';
-		require_once plugin_dir_path(__FILE__) . 'admin/demo.php';
-		require_once plugin_dir_path(__FILE__) . 'admin/adminpage.php';
+		require_once plugin_dir_path(__FILE__) . 'admin/options.php';
+
+		//var_dump(get_option('wpinstant_options'));
+		//var_dump(wpinstant_get_option('dns-prefetch'));
 	}
 }
 $wp_instant_articles = new WPInstantArticles_Plugin();
 
 /**
- * FIXME: Temporary dummy data
+ * FIXME: Move to better place
+ *
+ * //TODO: VALIDATION IN CMB2
  */
 add_filter('wpinstant_dns_prefetch_domains', function($domains) {
-	return array('//google.com', '//aftonbladet.se', 'http://reddit.com');
+	$domains = array();
+	foreach (WPIAC::cmb2_get_option('wpinstant_options', 'dns-prefetch', array()) as $domain) {
+		$parsed = parse_url($domain);
+		if(isset($parsed['path'])) {
+			$domains[] = '//' . $domain;
+		}
+	}
+	return $domains;
 });
