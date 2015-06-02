@@ -43,6 +43,7 @@ class WPInstantArticles_Plugin {
 
 	function load_admin_interface() {
 		require_once plugin_dir_path(__FILE__) . 'libraries/cmb2/init.php';
+		require_once plugin_dir_path(__FILE__) . 'libraries/cmb2-notification-field.php';
 		require_once plugin_dir_path(__FILE__) . 'admin/options.php';
 	}
 }

@@ -1,9 +1,4 @@
 <?php
-/**
- * CMB2 Theme Options
- * @version 0.1.0
- */
-
 class WPInstantArticles_Admin {
 	/**
 	 * Option key, and option page slug
@@ -93,6 +88,38 @@ class WPInstantArticles_Admin {
 						'value' => array( $this->key, )
 				),
 		) );
+
+
+		$cmb->add_field( array(
+				'name' => 'Pre-render homepage',
+				'desc' => 'Pre-render latest 2 posts on frontpage',
+				'id'   => 'prerender_homepage',
+				'type' => 'checkbox'
+		));
+
+		$cmb->add_field( array(
+				'name' => 'Pre-render pagination links',
+				'desc' => 'Pre-render previous/next pagination links on posts, pages and custom post types. (Your theme does not have to use WP pagination functions, it will still work regardless.)',
+				'id'   => 'prerender_pagination',
+				'type' => 'checkbox'
+		));
+
+		//TODO: Not fired properly on form update, needs a reload to work
+		//if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false)) :
+			$cmb->add_field( array(
+					'name' => '&nbsp;',
+					'desc' => '<strong>Warning</strong>: This feature may lead to higher load on your web site.',
+					'id'   => '_notification_prerender_pagination_enabled',
+					'type' => 'notification'
+			));
+		//endif;
+
+		$cmb->add_field( array(
+				'name' => 'DNS prefetch',
+				'desc' => 'Enable DNS prefetch',
+				'id'   => 'dns_prefetch_enabled',
+				'type' => 'checkbox'
+		));
 
 		$cmb->add_field( array(
 				'name' => 'DNS Prefetch domains',

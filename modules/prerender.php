@@ -15,8 +15,14 @@ class WPInstantArticles_PreRender {
 	}
 
 	function _init() {
-		add_action('wp_head', array(&$this, '_prerender_latest_posts'), 11);
-		add_action('wp_head', array(&$this, '_prerender_next_previous_single'), 12);
+		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_homepage', false)) {
+			add_action('wp_head', array(&$this, '_prerender_latest_posts'), 11);
+		}
+
+		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false)) {
+			add_action('wp_head', array(&$this, '_prerender_next_previous_single'), 12);
+		}
+
 	}
 
 	/**
@@ -47,8 +53,8 @@ class WPInstantArticles_PreRender {
 
 			$posts_to_prerender = $latest_posts_query->posts;
 		}
-		else if(is_archive()) { //FIXME: Premium only?
-
+		else if(is_archive()) {
+			//Handled in pro/prerender-archives.php
 		}
 
 		$urls = array();

@@ -10,7 +10,9 @@ class WPInstantArticles_DNS_Prefetch {
 	}
 
 	function _init() {
-		add_action('wp_head', array(&$this, '_wp_head'), 1);
+		if(WPIAC::cmb2_get_option('wpinstant_options', 'dns_prefetch_enabled', false)) {
+			add_action('wp_head', array(&$this, '_wp_head'), 1);
+		}
 	}
 
 	function _wp_head() {
