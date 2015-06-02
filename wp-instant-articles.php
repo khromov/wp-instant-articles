@@ -44,9 +44,6 @@ class WPInstantArticles_Plugin {
 	function load_admin_interface() {
 		require_once plugin_dir_path(__FILE__) . 'libraries/cmb2/init.php';
 		require_once plugin_dir_path(__FILE__) . 'admin/options.php';
-
-		//var_dump(get_option('wpinstant_options'));
-		//var_dump(wpinstant_get_option('dns-prefetch'));
 	}
 }
 $wp_instant_articles = new WPInstantArticles_Plugin();
@@ -59,9 +56,14 @@ $wp_instant_articles = new WPInstantArticles_Plugin();
 add_filter('wpinstant_dns_prefetch_domains', function($domains) {
 	$domains = array();
 	foreach (WPIAC::cmb2_get_option('wpinstant_options', 'dns-prefetch', array()) as $domain) {
+
+		//If this looks like a naked domain name, prepend http:// so we can get through parse_url
+		if(!preg_match('/^(http|https)/', $domain)) {
+			$domain = "http://{$domain}";
+		}
 		$parsed = parse_url($domain);
-		if(isset($parsed['path'])) {
-			$domains[] = '//' . $domain;
+		if(isset($parsed['host'])) {
+			$domains[] = '//' . $parsed['host'];
 		}
 	}
 	return $domains;
