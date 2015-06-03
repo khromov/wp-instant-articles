@@ -30,7 +30,7 @@ class WPInstantArticles_Admin {
 	 */
 	public function  __construct() {
 		// Set our title
-		$this->title = __( 'Subito', WPIAC::TD );
+		$this->title = __( 'Instant Articles', WPIAC::TD );
 	}
 
 	/**
