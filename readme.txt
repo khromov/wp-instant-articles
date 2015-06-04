@@ -1,21 +1,23 @@
 === Instant Articles ===
-Tags: prerender, prefetch, seo
+Tags: dns-prefetch, prerender, prefetch, seo
 Requires at least: 3.5
 Tested up to: 4.2.1
 Stable tag: 1.0
 License: GPL2
 Contributors: khromov
 
-Plugin tagline here!
+Increase your site speed with DNS prefetching and HTML5 prerender.
 
 == Description ==
-Description tab
+
+This plugin will let you configure DNS prefetching and also automatically insert HTML5 prerender tags for your latest posts on the
+front page as well as next/previous posts when viewing a single post. More prerendering options will be added soon!
 
 **Usage**
 
 *Basic usage*
 
-Usage tab
+Install plugin, go to the WP Admin > Instant Articles screen and enable the features you want.
 
 == Requirements ==
 
@@ -26,23 +28,19 @@ Usage tab
 
 == Installation ==
 1. Upload the the plugin folder to `/wp-content/plugins/`
-2. Activate the pluginthrough the 'Plugins' menu in WordPress
-3. Configure it via the admin menu
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Configure it via the new admin menu
 
 == Frequently Asked Questions ==
 
-= Question 1 =
+= What is HTML5 prerendering? =
 
-Answer 1
-
-= Question 2 =
-
-Answer 2
+Please see the following link:
+http://www.holovaty.com/writing/prerendering/
 
 == Screenshots ==
 
-1. Screenshot 1 description
-2. Screenshot 2 description
+1. Administration screen
 
 == Changelog ==
 

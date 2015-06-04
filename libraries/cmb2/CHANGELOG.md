@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 
 * 
 
+## 2.0.8 - 2015-06-01
+
+### Bug Fixes
+
+* Fix color-picker field not enqueueing the colorpicker script. ([#333](https://github.com/WebDevStudios/CMB2/issues/333))
+
+## 2.0.7 - 2015-05-28
+
+### Enhancements
+
+* Ability to use non-repeatable group fields by setting the `'repeatable'` field param to `false` when registering a group field type. Props [marcusbattle](https://github.com/marcusbattle), ([#159](https://github.com/WebDevStudios/CMB2/pull/159)).
+* Add and enqeueue a front-end specific CSS file which adds additional styles which are typically covered by wp-admin css. ([#311](https://github.com/WebDevStudios/CMB2/issues/311))
+* Better handling of the CMB2 javascript (and CSS) required dependencies array. Dependencies are now only added conditionally based on the field types that are actually visible. ([#136](https://github.com/WebDevStudios/CMB2/issues/136))
+* **THIS IS A BREAKING CHANGE:** The `group` field type's `'show_on_cb'` property now receives the `CMB2_Field` object instance as an argument instead of the `CMB2` instance. If you're using the `'show_on_cb'` property for a `group` field, please adjust accordingly. _note: you can still retrieve the `CMB2` instance via the `cmb2_get_metabox` helper function._
+* New dynamic hook, `"cmb2_save_{$object_type}_fields_{$this->cmb_id}"`, to complement the existing `"cmb2_save_{$object_type}_fields"` hook.
+* New CMB2 property, `enqueue_js`, to disable the enqueueing of the CMB2 Javascript.
+* German translation provided by Friedhelm Jost.
+
+### Bug Fixes
+
+* Fix incorrect repeatable group title number. ([#310](https://github.com/WebDevStudios/CMB2/pull/310))
+* Fix obscure bug which prevented group field arguments from being passed to the sub-fields (like `show_names` and `context`).
+* Fixed occasional issue when adding a group row, the previous row's content would be cloned. ([#257](https://github.com/WebDevStudios/CMB2/pull/257))
+
 ## 2.0.6 - 2015-04-30
 
 ### Enhancements
