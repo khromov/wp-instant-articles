@@ -2,7 +2,7 @@
 /*
 Plugin Name: Instant Articles
 Plugin URI: https://wordpress.org/plugins/instant-articles/
-Description: -
+Description: Increase your site performance with DNS prefetching and HTML5 prerender
 Version: 1.0
 Author: khromov
 Author URI: https://khromov.se
