@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: WP Instant Articles
-Plugin URI: http://wp-instant-articles.com
+Plugin Name: Instant Articles
+Plugin URI: https://wordpress.org/plugins/instant-articles/
 Description: -
 Version: 1.0
 Author: khromov
