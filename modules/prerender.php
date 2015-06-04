@@ -54,7 +54,7 @@ class WPInstantArticles_PreRender {
 			$posts_to_prerender = $latest_posts_query->posts;
 		}
 		else if(is_archive()) {
-			//Handled in pro/prerender-archives.php
+			//TODO: Handle in prerender-archives.php
 		}
 
 		$urls = array();
