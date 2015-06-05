@@ -99,7 +99,7 @@ class WPInstantArticles_Admin {
 
 		$cmb->add_field( array(
 				'name' => 'Pre-render pagination links',
-				'desc' => 'Pre-render previous/next pagination links on posts, pages and custom post types. (Your theme does not have to use WP pagination functions, it will still work regardless.)',
+				'desc' => 'Pre-render previous and next links on posts, pages and custom post types using rel="next" and rel="prev".',
 				'id'   => 'prerender_pagination',
 				'type' => 'checkbox'
 		));
@@ -108,7 +108,7 @@ class WPInstantArticles_Admin {
 		//if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false)) :
 			$cmb->add_field( array(
 					'name' => '&nbsp;',
-					'desc' => '<strong>Warning</strong>: This feature may lead to higher load on your web site.',
+					'desc' => '<strong>Warning</strong>: This feature may increase server load.',
 					'id'   => '_notification_prerender_pagination_enabled',
 					'type' => 'notification'
 			));
