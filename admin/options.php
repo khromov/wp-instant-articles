@@ -184,7 +184,10 @@ class WPInstantArticles_Admin {
 				'name' => 'DNS prefetch',
 				'desc' => 'Enable DNS prefetch',
 				'id'   => 'dns_prefetch_enabled',
-				'type' => 'checkbox'
+				'type' => 'checkbox',
+				'options' => array(
+						'add_row_text' => 'Add domain'
+				)
 		));
 
 		$cmb->add_field( array(
