@@ -92,7 +92,7 @@ class WPInstantArticles_Admin {
 	public function add_options_page() {
 		$svg_icon = plugin_dir_url( __FILE__ ) . '../assets/icon.svg';
 		//$image_tag = '<img src="'. $svg_icon .'" alt="Instant Articles Logo>"';
-		$this->options_page = add_menu_page( $this->title, $this->title, 'manage_options', $this->key, array( $this, 'admin_page_display' ) , $svg_icon);
+		$this->options_page = add_menu_page( $this->title . ' Settings', $this->title, 'manage_options', $this->key, array( $this, 'admin_page_display' ) , $svg_icon);
 		// add_action( "admin_head-{$this->options_page}", array( $this, 'enqueue_js' ) );
 
 		// Adds my_help_tab when my_admin_page loads
