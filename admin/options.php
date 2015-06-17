@@ -41,6 +41,7 @@ class WPInstantArticles_Admin {
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
 		add_action( 'cmb2_init', array( $this, 'add_options_page_metabox' ) );
+		add_action( 'admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
 	}
 
 	/**
@@ -49,6 +50,54 @@ class WPInstantArticles_Admin {
 	 */
 	public function init() {
 		register_setting( $this->key, $this->key );
+	}
+
+	/**
+	 * Print admin css
+	 */
+	public function admin_enqueue_scripts($hook) {
+		if($hook === 'toplevel_page_wpinstant_options') {
+			?>
+				<style type="text/css">
+					body .cmb-th
+					{
+						padding-bottom: 5px;
+					}
+
+					.cmb2-id-prerender-homepage > .cmb-td,
+					.cmb2-id-prerender-pagination > .cmb-td,
+					.cmb2-id-dns-prefetch-enabled > .cmb-td,
+					.cmb2-id-dns-prefetch > .cmb-td
+					{
+						width: 100%;
+					}
+
+
+					.cmb2-id--notification-prerender-pagination-enabled > .cmb-th
+					{
+						display: none;
+					}
+
+					body .cmb2-id--notification-prerender-pagination-enabled .notice
+					{
+						margin-bottom: 0;
+					}
+
+					#dns-prefetch_repeat .cmb-td
+					{
+						padding-left: 0;
+					}
+
+					.cmb2-id-dns-prefetch button.cmb-add-row-button {
+						margin-bottom: 20px;
+					}
+
+					#wpinstant_option_metabox > input {
+						margin-left: 10px;
+					}
+				</style>
+			<?php
+		}
 	}
 
 	/**
