@@ -31,6 +31,10 @@
 		margin-bottom: 20px;
 	}
 
+	body span.cmb2-metabox-description {
+		color: #444;
+	}
+
 	#wpinstant_option_metabox > input {
 		margin-left: 10px;
 	}
