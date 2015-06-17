@@ -88,7 +88,7 @@ class WPInstantArticles_Admin {
 					}
 
 
-					.cmb2-id--notification-prerender-pagination-enabled > .cmb-th
+					.cmb-type-notification .cmb-th
 					{
 						display: none;
 					}
@@ -174,9 +174,10 @@ class WPInstantArticles_Admin {
 		//if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false)) :
 			$cmb->add_field( array(
 					'name' => '&nbsp;',
-					'desc' => '<strong>Warning</strong>: This feature may increase server load.',
+					'desc' => 'This feature may increase server load.',
 					'id'   => '_notification_prerender_pagination_enabled',
-					'type' => 'notification'
+					'type' => 'notification',
+					'classes' => array('update-nag')
 			));
 		//endif;
 
@@ -195,6 +196,14 @@ class WPInstantArticles_Admin {
 				'id'   => 'dns-prefetch',
 				'type' => 'text',
 			  'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		));
+
+		$cmb->add_field( array(
+				'name' => '&nbsp;',
+				'desc' => 'It is recommended to not use more than 5 prefetch domains.',
+				'id'   => '_notification_dns_prefetch_recommendation',
+				'type' => 'notification',
+				'classes' => array()
 		));
 	}
 
