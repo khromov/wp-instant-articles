@@ -87,7 +87,6 @@ class WPInstantArticles_Admin {
 						width: 100%;
 					}
 
-
 					.cmb-type-notification .cmb-th
 					{
 						display: none;
@@ -115,6 +114,17 @@ class WPInstantArticles_Admin {
 		}
 	}
 
+	public function add_help_tab() {
+		// Not using chaining here, so as to be parseable by PHP4.
+		$screen = get_current_screen();
+
+		$screen->add_help_tab( array(
+				'id'      => 'overview',
+				'title'   => __( 'Overview' ),
+				'content' => 'helölo',
+		));
+	}
+
 	/**
 	 * Add menu options page
 	 * @since 0.1.0
@@ -124,6 +134,9 @@ class WPInstantArticles_Admin {
 		//$image_tag = '<img src="'. $svg_icon .'" alt="Instant Articles Logo>"';
 		$this->options_page = add_menu_page( $this->title, $this->title, 'manage_options', $this->key, array( $this, 'admin_page_display' ) , $svg_icon);
 		// add_action( "admin_head-{$this->options_page}", array( $this, 'enqueue_js' ) );
+
+		// Adds my_help_tab when my_admin_page loads
+		add_action('load-' . $this->options_page, array(&$this, 'add_help_tab'));
 	}
 
 	/**
