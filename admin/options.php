@@ -30,7 +30,7 @@ class WPInstantArticles_Admin {
 	 */
 	public function  __construct() {
 		// Set our title
-		$this->title = __( 'Instant Articles Settings', WPIAC::TD );
+		$this->title = __( 'Instant Articles', WPIAC::TD );
 	}
 
 	/**
@@ -58,18 +58,8 @@ class WPInstantArticles_Admin {
 	public function admin_enqueue_scripts($hook) {
 
 		//General style for all admin pages
-		?>
-		<style type="text/css">
-			.toplevel_page_wpinstant_options .wp-menu-image > img {
-				width: 100%;
-				height: 70%;
-			}
+		echo WPInstantArticles_Common::template('admin-global-css');
 
-			#adminmenu .toplevel_page_wpinstant_options div.wp-menu-name {
-				padding-top: 12px;
-			}
-		</style>
-		<?php
 		//Special style for Instant Articles page
 		if($hook === 'toplevel_page_wpinstant_options') {
 			echo WPInstantArticles_Common::template('admin-css');
