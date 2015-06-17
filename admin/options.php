@@ -56,6 +56,17 @@ class WPInstantArticles_Admin {
 	 * Print admin css
 	 */
 	public function admin_enqueue_scripts($hook) {
+
+		//General style for all admin pages
+		?>
+		<style type="text/css">
+			.toplevel_page_wpinstant_options .wp-menu-image > img {
+				width: 100%;
+				height: 50%;
+			}
+		</style>
+		<?php
+		//Special style for Instant Articles page
 		if($hook === 'toplevel_page_wpinstant_options') {
 			?>
 				<style type="text/css">
@@ -105,7 +116,7 @@ class WPInstantArticles_Admin {
 	 * @since 0.1.0
 	 */
 	public function add_options_page() {
-		$this->options_page = add_menu_page( $this->title, $this->title, 'manage_options', $this->key, array( $this, 'admin_page_display' ) , 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMjU2cHgiIGhlaWdodD0iMjU2cHgiIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4gICAgICAgIDx0aXRsZT5JY29uIFNWRzwvdGl0bGU+ICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPiAgICA8ZGVmcz48L2RlZnM+ICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHNrZXRjaDp0eXBlPSJNU1BhZ2UiPiAgICAgICAgPGcgaWQ9Ikljb24tU1ZHIiBza2V0Y2g6dHlwZT0iTVNMYXllckdyb3VwIj4gICAgICAgICAgICA8cmVjdCBpZD0iMjU2IiBmaWxsPSIjNDk5MEUyIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiI+PC9yZWN0PiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMjgsMjE4IEMxNzcuNzA1NjI3LDIxOCAyMTgsMTc3LjcwNTYyNyAyMTgsMTI4IEMyMTgsNzguMjk0MzcyNSAxNzcuNzA1NjI3LDM4IDEyOCwzOCBDNzguMjk0MzcyNSwzOCAzOCw3OC4yOTQzNzI1IDM4LDEyOCBDMzgsMTc3LjcwNTYyNyA3OC4yOTQzNzI1LDIxOCAxMjgsMjE4IEwxMjgsMjE4IEwxMjgsMjE4IFogTTEyOCw3Ny4zNzUgTDE0NC44NzUsNzcuMzc1IEMxNTQuMTk0ODA1LDc3LjM3NSAxNjEuNzUsODQuOTIzMTMwOSAxNjEuNzUsOTQuMjUwNzMgTDE2MS43NSwxNjEuNzQ5MjcgQzE2MS43NSwxNzEuMDY5NDc4IDE1NC4xOTY4NTQsMTc4LjYyNSAxNDQuODc1LDE3OC42MjUgTDEyOCw3Ny4zNzUgTDEyOCw3Ny4zNzUgWiBNMTIyLjM3NSwxNjEuNzUgTDExMS4xMjUsMTYxLjc1IEMxMDQuOTExNzk3LDE2MS43NSA5OS44NzUsMTU2LjcwNDEzNCA5OS44NzUsMTUwLjQ5MDAyIEw5OS44NzUsMTA1LjUwOTk4IEM5OS44NzUsOTkuMjkxMjY0OCAxMDQuOTEwNDMsOTQuMjUgMTExLjEyNSw5NC4yNSBMMTIyLjM3NSwxNjEuNzUgTDEyMi4zNzUsMTYxLjc1IFoiIGlkPSJPdmFsLTE1IiBmaWxsPSIjRkZGRkZGIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=' );
+		$this->options_page = add_menu_page( $this->title, $this->title, 'manage_options', $this->key, array( $this, 'admin_page_display' ) , (plugin_dir_url( __FILE__ ) . '../assets/icon.svg') );
 		// add_action( "admin_head-{$this->options_page}", array( $this, 'enqueue_js' ) );
 	}
 
