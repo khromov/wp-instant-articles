@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Instant Articles
-Plugin URI: https://wordpress.org/plugins/instant-articles/
+Plugin URI: https://wpinstant.io
 Description: Increase your site performance with DNS prefetching and HTML5 prerender
 Version: 1.2
-Author: khromov
-Author URI: https://khromov.se
+Author: titanas, khromov
+Author URI: http://titan.as
 */
 
 require 'libraries/common.php';
