@@ -158,10 +158,7 @@ class WPInstantArticles_Admin {
 				'name' => 'DNS prefetch',
 				'desc' => 'Enable DNS prefetch',
 				'id'   => 'dns_prefetch_enabled',
-				'type' => 'checkbox',
-				'options' => array(
-						'add_row_text' => 'Add domain'
-				)
+				'type' => 'checkbox'
 		));
 
 		$cmb->add_field( array(
@@ -169,6 +166,9 @@ class WPInstantArticles_Admin {
 				'id'   => 'dns-prefetch',
 				'type' => 'text',
 			  'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+				'options' => array(
+						'add_row_text' => 'Add Domain'
+				)
 		));
 
 		$cmb->add_field( array(
