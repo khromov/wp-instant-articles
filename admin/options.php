@@ -72,45 +72,7 @@ class WPInstantArticles_Admin {
 		<?php
 		//Special style for Instant Articles page
 		if($hook === 'toplevel_page_wpinstant_options') {
-			?>
-				<style type="text/css">
-					body .cmb-th
-					{
-						padding-bottom: 5px;
-					}
-
-					.cmb2-id-prerender-homepage > .cmb-td,
-					.cmb2-id-prerender-pagination > .cmb-td,
-					.cmb2-id-dns-prefetch-enabled > .cmb-td,
-					.cmb2-id-dns-prefetch > .cmb-td
-					{
-						width: 100%;
-					}
-
-					.cmb-type-notification .cmb-th
-					{
-						display: none;
-					}
-
-					body .cmb2-id--notification-prerender-pagination-enabled .notice
-					{
-						margin-bottom: 0;
-					}
-
-					#dns-prefetch_repeat .cmb-td
-					{
-						padding-left: 0;
-					}
-
-					.cmb2-id-dns-prefetch button.cmb-add-row-button {
-						margin-bottom: 20px;
-					}
-
-					#wpinstant_option_metabox > input {
-						margin-left: 10px;
-					}
-				</style>
-			<?php
+			echo WPInstantArticles_Common::template('admin-css');
 		}
 	}
 
@@ -119,10 +81,18 @@ class WPInstantArticles_Admin {
 		$screen = get_current_screen();
 
 		$screen->add_help_tab( array(
-				'id'      => 'overview',
-				'title'   => __( 'Overview' ),
-				'content' => 'helölo',
+				'id'      => 'instant-articles-help',
+				'title'   => __( 'Instant Articles' ),
+				'content' => WPInstantArticles_Common::template('admin-help-tab'),
 		));
+
+		/*
+		$screen->add_help_tab( array(
+				'id'      => 'overview2',
+				'title'   => __( 'Another tab' ),
+				'content' => 'hello',
+		));
+		*/
 	}
 
 	/**

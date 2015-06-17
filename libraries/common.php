@@ -68,6 +68,13 @@ class WPInstantArticles_Common {
 		$group_values = get_option($group);
 		return isset($group_values[$key]) ? $group_values[$key] : $default;
 	}
+
+	static function template($name) {
+
+		ob_start();
+		include __DIR__ . '/../partials/' . $name . '.php';
+		return ob_get_clean();
+	}
 }
 
 /**
