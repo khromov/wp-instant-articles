@@ -1,6 +1,6 @@
 === Instant Articles ===
 Tags: dns-prefetch, prerender, prefetch, seo
-Requires at least: 3.5
+Requires at least: 4.0
 Tested up to: 4.2.1
 Stable tag: 1.0
 License: GPL2
@@ -15,6 +15,8 @@ Instant Articles for WordPress will let you configure DNS prefetching URLs and w
 It is not recommended to use more than 4-5 URLs for DNS prefetching.
 
 Enabling page prerendering will likely increase server and client (browsers) load. 
+
+Visit the Instant Articles homepage for more info: http://wpinstant.io/
 
 **Usage**
 
