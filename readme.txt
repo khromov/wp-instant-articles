@@ -39,7 +39,7 @@ Install plugin, go to the WP Admin > Instant Articles screen and enable the feat
 
 == Frequently Asked Questions ==
 
-= What is HTML5 DNS prefetch?
+= What is HTML5 DNS prefetch? =
 
 DNS prefetching is an attempt to resolve domain names before a user tries to follow a link, improving perceived page load time and user experience.
 
