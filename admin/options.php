@@ -71,18 +71,22 @@ class WPInstantArticles_Admin {
 		$screen = get_current_screen();
 
 		$screen->add_help_tab( array(
-				'id'      => 'instant-articles-help',
-				'title'   => __( 'Instant Articles' ),
-				'content' => WPInstantArticles_Common::template('admin-help-tab'),
+				'id'      => 'instant-articles-overview',
+				'title'   => __( 'Overview' ),
+				'content' => WPInstantArticles_Common::template('admin-help-tab-overview'),
 		));
 
-		/*
 		$screen->add_help_tab( array(
-				'id'      => 'overview2',
-				'title'   => __( 'Another tab' ),
-				'content' => 'hello',
+				'id'      => 'instant-articles-prerender',
+				'title'   => __( 'Pre-render' ),
+				'content' => WPInstantArticles_Common::template('admin-help-tab-prerender'),
 		));
-		*/
+
+		$screen->add_help_tab( array(
+				'id'      => 'instant-articles-dnsprefetch',
+				'title'   => __( 'DNS Prefetch' ),
+				'content' => WPInstantArticles_Common::template('admin-help-tab-dnsprefetch'),
+		));
 	}
 
 	/**
