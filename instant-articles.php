@@ -50,11 +50,11 @@ class WPInstantArticles_Plugin {
 $wp_instant_articles = new WPInstantArticles_Plugin();
 
 /**
- * FIXME: Move to better place
- *
- * //TODO: VALIDATION IN CMB2
+ * TODO: Move to better place
+ * TODO: Validation in CMB2
  */
-add_filter('wpinstant_dns_prefetch_domains', function($domains) {
+add_filter('wpinstant_dns_prefetch_domains', 'wpinstant_dns_prefetch_domains');
+function wpinstant_dns_prefetch_domains($domains) {
 	$domains = array();
 	foreach (WPIAC::cmb2_get_option('wpinstant_options', 'dns-prefetch', array()) as $domain) {
 
@@ -68,4 +68,4 @@ add_filter('wpinstant_dns_prefetch_domains', function($domains) {
 		}
 	}
 	return $domains;
-});
+}

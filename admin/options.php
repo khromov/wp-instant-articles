@@ -132,7 +132,6 @@ class WPInstantArticles_Admin {
 				),
 		) );
 
-
 		$cmb->add_field( array(
 				'name' => 'Pre-render homepage',
 				'desc' => 'Pre-render latest 2 posts on frontpage',
