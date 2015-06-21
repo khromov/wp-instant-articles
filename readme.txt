@@ -6,7 +6,7 @@ Stable tag: 1.0
 License: GPL2
 Contributors: Stanislav Khromov, Stefanos Kofopoulos
 
-Instant Articles for WordPress dramatically improves user experience with significantly faster perceived site speed using DNS prefetching and page prerendering technologies. 
+WordPress Instant Articles dramatically improves user experience and site speed. Posts load instantly with page pre-render and DNS prefetch. 
 
 == Description ==
 
