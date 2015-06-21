@@ -1,4 +1,4 @@
-=== Instant Articles ===
+=== WordPress Instant Articles ===
 Tags: dns-prefetch, prerender, prefetch, seo
 Requires at least: 4.0
 Tested up to: 4.2.1
