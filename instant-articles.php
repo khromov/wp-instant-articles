@@ -20,9 +20,8 @@ class WPInstantArticles_Plugin {
 
 	function __construct() {
 		$modules = array(
-				'dns-prefetch' => 'WPInstantArticles_DNS_Prefetch',
-				'prerender' => 'WPInstantArticles_PreRender',
-				'pro/prerender-archives' => 'WPInstantArticles_PreRender_Archives'
+			'dns-prefetch' => 'WPInstantArticles_DNS_Prefetch',
+			'prerender' => 'WPInstantArticles_PreRender'
 		);
 
 		$modules_directory = plugin_dir_path(__FILE__) . 'modules/';

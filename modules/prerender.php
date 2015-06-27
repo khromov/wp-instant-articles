@@ -19,16 +19,39 @@ class WPInstantArticles_PreRender {
 			add_action('wp_head', array(&$this, '_prerender_latest_posts'), 11);
 		}
 
-		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false)) {
-			add_action('wp_head', array(&$this, '_prerender_next_previous_single'), 12);
+		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_sticky_posts', false)) {
+			add_action('wp_head', array(&$this, '_prerender_sticky_post'), 12);
 		}
+
+		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false)) {
+			add_action('wp_head', array(&$this, '_prerender_next_previous_single'), 13);
+		}
+	}
+
+	/**
+	 * Prerenders "sticky" posts
+	 *
+	 * https://codex.wordpress.org/Sticky_Posts
+	 */
+	function _prerender_sticky_post() {
+		$sticky_posts_query = new WP_Query(array(
+				'post__in'  => get_option( 'sticky_posts' ),
+				'posts_per_page' => apply_filters('wpinstant_prerender_number_of_sticky_posts', 2),
+				'ignore_sticky_posts' => true
+		));
+
+		$urls = array();
+		foreach($sticky_posts_query->posts as $post) {
+			$urls[] = get_the_permalink($post->ID);
+		}
+
+		WPInstantArticles_Common::print_prerender_markup($urls);
 	}
 
 	/**
 	 * Prerender latest posts
 	 *
 	 * If If General -> Reading is set to "Your latest posts", this will preload
-	 *
 	 */
 	function _prerender_latest_posts() {
 		global $wp_query;
@@ -42,8 +65,7 @@ class WPInstantArticles_PreRender {
 				$posts_to_prerender = array_slice($wp_query->posts, 0, apply_filters('wpinstant_prerender_number_of_posts', 2));
 			}
 		}
-		//If General -> Reading is set to "A static page", grab the latest 2 posts
-		else if(is_front_page()) {
+		else if(is_front_page()) { //If General -> Reading is set to "A static page", grab the latest 2 posts
 
 			$latest_posts_query = new WP_Query(array(
 					'post_type' => apply_filters('wpinstant_post_types', array('post')),

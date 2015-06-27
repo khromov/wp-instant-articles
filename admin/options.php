@@ -146,11 +146,18 @@ class WPInstantArticles_Admin {
 				'type' => 'checkbox'
 		));
 
+		$cmb->add_field( array(
+				'name' => 'Pre-render sticky posts',
+				'desc' => 'Pre-render posts marked as "sticky"  (max 2 posts), read more in the ' . '<a target="_blank" href="https://codex.wordpress.org/Sticky_Posts">Codex</a>.',
+				'id'   => 'prerender_sticky_posts',
+				'type' => 'checkbox'
+		));
+
 		//TODO: Not fired properly on form update, needs a reload to work
 		//if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false)) :
 			$cmb->add_field( array(
 					'name' => '&nbsp;',
-					'desc' => 'This feature may increase server load.',
+					'desc' => 'Prerendering may slightly increase server load.',
 					'id'   => '_notification_prerender_pagination_enabled',
 					'type' => 'notification',
 					'classes' => array('update-nag')
@@ -198,7 +205,6 @@ class WPInstantArticles_Admin {
 
 		throw new Exception( 'Invalid property: ' . $field );
 	}
-
 }
 
 /**

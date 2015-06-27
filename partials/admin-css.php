@@ -7,7 +7,8 @@
 	.cmb2-id-prerender-homepage > .cmb-td,
 	.cmb2-id-prerender-pagination > .cmb-td,
 	.cmb2-id-dns-prefetch-enabled > .cmb-td,
-	.cmb2-id-dns-prefetch > .cmb-td
+	.cmb2-id-dns-prefetch > .cmb-td,
+	.cmb2-id-prerender-sticky-posts > .cmb-td
 	{
 		width: 100%;
 	}
