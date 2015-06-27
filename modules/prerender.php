@@ -22,7 +22,6 @@ class WPInstantArticles_PreRender {
 		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false)) {
 			add_action('wp_head', array(&$this, '_prerender_next_previous_single'), 12);
 		}
-
 	}
 
 	/**
