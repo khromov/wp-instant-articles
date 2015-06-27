@@ -57,5 +57,8 @@ https://www.chromium.org/developers/design-documents/prerender
 
 == Changelog ==
 
+= 1.1 =
+* Fixed dashboard icon being too big: https://wordpress.org/support/topic/dashboard-logo-icon-issue
+
 = 1.0 =
 * Initial release
