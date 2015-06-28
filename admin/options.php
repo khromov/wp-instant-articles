@@ -41,7 +41,7 @@ class WPInstantArticles_Admin {
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
 		add_action( 'cmb2_init', array( $this, 'add_options_page_metabox' ) );
-		add_action( 'admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
+		add_action( 'admin_head', array($this, 'admin_head'));
 	}
 
 	/**
@@ -55,14 +55,16 @@ class WPInstantArticles_Admin {
 	/**
 	 * Print admin css
 	 */
-	public function admin_enqueue_scripts($hook) {
-
+	public function admin_head() {
 		//General style for all admin pages
 		echo WPInstantArticles_Common::template('admin-global-css');
 
-		//Special style for Instant Articles page
-		if($hook === 'toplevel_page_wpinstant_options') {
-			echo WPInstantArticles_Common::template('admin-css');
+		//Sanity check
+		if($screen = get_current_screen()) {
+			//Special style for Instant Articles page
+			if($screen->base === 'toplevel_page_wpinstant_options') {
+				echo WPInstantArticles_Common::template('admin-css');
+			}
 		}
 	}
 
