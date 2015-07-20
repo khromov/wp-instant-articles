@@ -57,6 +57,10 @@ https://www.chromium.org/developers/design-documents/prerender
 
 == Changelog ==
 
+= 1.2 =
+* Sticky post preloading
+* General cleanup in preparation for the next major version!
+
 = 1.1 =
 * Fixed dashboard icon being too big: https://wordpress.org/support/topic/dashboard-logo-icon-issue
 
