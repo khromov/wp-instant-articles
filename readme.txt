@@ -2,7 +2,7 @@
 Tags: dns-prefetch, prerender, prefetch, seo, speed, optimization, performance, optimize
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPL2
 Contributors: khromov, titanas
 
@@ -58,6 +58,10 @@ https://www.chromium.org/developers/design-documents/prerender
 1. Administration screen
 
 == Changelog ==
+
+= 1.3.1 =
+* Add new filter for adding custom URLs to prerender: wpinstant_prerendered_urls
+* Fix typo in wpinstant_subresources filter.
 
 = 1.3 =
 * Supercharge your site by specifying which subresources to load. More info: https://www.chromium.org/spdy/link-headers-and-server-hint/link-rel-subresource

@@ -15,6 +15,10 @@ class WPInstantArticles_PreRender {
 	}
 
 	function _init() {
+
+		add_action('wp_head', array(&$this, '_prerender_filter'), 11);
+
+
 		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_homepage', false)) {
 			add_action('wp_head', array(&$this, '_prerender_latest_posts'), 11);
 		}
@@ -26,6 +30,13 @@ class WPInstantArticles_PreRender {
 		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false)) {
 			add_action('wp_head', array(&$this, '_prerender_next_previous_single'), 13);
 		}
+	}
+
+	/**
+	 * Prerender any URL:s in wpinstant_prerendered_urls filter.
+	 */
+	function _prerender_filter() {
+		WPInstantArticles_Common::print_prerender_markup(apply_filters('wpinstant_prerendered_urls', array()));
 	}
 
 	/**
