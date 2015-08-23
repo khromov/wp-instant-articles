@@ -57,6 +57,9 @@ https://www.chromium.org/developers/design-documents/prerender
 
 == Changelog ==
 
+= 1.3 =
+* Added support for subresource. More info: https://www.chromium.org/spdy/link-headers-and-server-hint/link-rel-subresource
+
 = 1.2 =
 * Sticky post preloading
 * General cleanup in preparation for the next major version!
