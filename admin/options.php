@@ -190,6 +190,24 @@ class WPInstantArticles_Admin {
 				'type' => 'notification',
 				'classes' => array()
 		));
+
+		$cmb->add_field( array(
+				'name' => 'Subresources',
+				'desc' => 'Enable subresources',
+				'id'   => 'subresources_enabled',
+				'type' => 'checkbox'
+		));
+
+		$cmb->add_field( array(
+				'name' => 'Subresource URLs',
+				'id'   => 'subresources',
+				'desc' => 'Enter the full or relative URL to any subresources you wish to load on every page load to improve load time. Documentation for subresources can be found <a href="https://www.chromium.org/spdy/link-headers-and-server-hint/link-rel-subresource" target="_blank">here</a>.',
+				'type' => 'text',
+				'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+				'options' => array(
+						'add_row_text' => 'Add subresource URL'
+				)
+		));
 	}
 
 	/**

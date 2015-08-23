@@ -8,7 +8,9 @@
 	.cmb2-id-prerender-pagination > .cmb-td,
 	.cmb2-id-dns-prefetch-enabled > .cmb-td,
 	.cmb2-id-dns-prefetch > .cmb-td,
-	.cmb2-id-prerender-sticky-posts > .cmb-td
+	.cmb2-id-prerender-sticky-posts > .cmb-td,
+	.cmb2-id-subresources > .cmb-td,
+	.cmb2-id-subresources-enabled > .cmb-td
 	{
 		width: 100%;
 	}
@@ -23,7 +25,8 @@
 		margin-bottom: 0;
 	}
 
-	#dns-prefetch_repeat .cmb-td
+	#dns-prefetch_repeat .cmb-td,
+	#subresources_repeat .cmb-td
 	{
 		padding-left: 0;
 	}
