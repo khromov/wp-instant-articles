@@ -2,7 +2,7 @@
 Tags: dns-prefetch, prerender, prefetch, seo, speed, optimization, performance, optimize
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPL2
 Contributors: khromov, titanas
 
