@@ -14,7 +14,7 @@ class WPInstantArticles_Subresource {
 			add_action('wp_head', array(&$this, '_wp_head'), 2);
 		}
 
-		add_filter('wpinstant_subersources', array(&$this, 'subresources'));
+		add_filter('wpinstant_subresources', array(&$this, 'subresources'));
 	}
 
 	function subresources($domains) {
@@ -28,7 +28,7 @@ class WPInstantArticles_Subresource {
 	}
 
 	function _wp_head() {
-		foreach(apply_filters('wpinstant_subersources', array()) as $subresource) {
+		foreach(apply_filters('wpinstant_subresources', array()) as $subresource) {
 			echo '  <link rel="subresource" href="'. trim($subresource) .'">';
 		}
 	}
