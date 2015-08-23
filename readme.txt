@@ -6,7 +6,7 @@ Stable tag: 1.2
 License: GPL2
 Contributors: khromov, titanas
 
-WordPress Instant Articles dramatically improves user experience and site speed. Posts load instantly with page pre-render and DNS prefetch. 
+WordPress Instant Articles dramatically improves user experience and site speed. Posts load instantly with page pre-render, DNS prefetch and HTML5 subresources.
 
 == Description ==
 
@@ -14,7 +14,9 @@ Instant Articles for WordPress will let you configure DNS prefetching URLs and w
 
 It is not recommended to use more than 4-5 URLs for DNS prefetching.
 
-Enabling page prerendering will likely increase server and client (browsers) load. 
+Enabling page prerendering will likely increase server and client (browsers) load.
+
+Enabling subresources will let you specify URL:s to prepare the web browser for fetching these even before they appear in the HTML document.
 
 Visit the Instant Articles homepage for more info: http://wpinstant.io/
 
@@ -58,7 +60,7 @@ https://www.chromium.org/developers/design-documents/prerender
 == Changelog ==
 
 = 1.3 =
-* Added support for subresource. More info: https://www.chromium.org/spdy/link-headers-and-server-hint/link-rel-subresource
+* Supercharge your site by specifying which subresources to load. More info: https://www.chromium.org/spdy/link-headers-and-server-hint/link-rel-subresource
 
 = 1.2 =
 * Sticky post preloading
