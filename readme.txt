@@ -68,6 +68,10 @@ https://www.chromium.org/spdy/link-headers-and-server-hint/link-rel-subresource
 
 == Changelog ==
 
+= 1.4 =
+* Introduce subresource support
+* Add new filter for adding custom URLs to subresources list: wpinstant_subresources
+
 = 1.3.1 =
 * Add new filter for adding custom URLs to prerender: wpinstant_prerendered_urls
 * Fix typo in wpinstant_subresources filter.
