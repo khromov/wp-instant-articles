@@ -1,8 +1,8 @@
 === WordPress Instant Articles ===
 Tags: dns-prefetch, prerender, prefetch, seo, speed, optimization, performance, optimize, subresource, html5
 Requires at least: 4.0
-Tested up to: 4.2.2
-Stable tag: 1.3.1
+Tested up to: 4.3.1
+Stable tag: 1.4
 License: GPL2
 Contributors: khromov, titanas
 
