@@ -208,6 +208,24 @@ class WPInstantArticles_Admin {
 						'add_row_text' => 'Add subresource URL'
 				)
 		));
+
+		$cmb->add_field( array(
+				'name' => 'Link prefetch',
+				'desc' => 'Enable resource prefetching',
+				'id'   => 'prefetch_enabled',
+				'type' => 'checkbox'
+		));
+
+		$cmb->add_field( array(
+				'name' => 'Prefetched URLs',
+				'id'   => 'prefetch_links',
+				'desc' => 'Enter the full or relative URL to any resources you wish to prefetch on every page load to improve load time. Documentation for prefetching can be found <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ" target="_blank">here</a>.',
+				'type' => 'text',
+				'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+				'options' => array(
+						'add_row_text' => 'Add prefetched URL'
+				)
+		));
 	}
 
 	/**

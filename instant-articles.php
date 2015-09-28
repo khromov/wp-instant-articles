@@ -22,7 +22,8 @@ class WPInstantArticles_Plugin {
 		$modules = array(
 			'dns-prefetch' => 'WPInstantArticles_DNS_Prefetch',
 			'prerender' => 'WPInstantArticles_PreRender',
-			'subresource' => 'WPInstantArticles_Subresource'
+			'subresource' => 'WPInstantArticles_Subresource',
+			'prefetch' => 'WPInstantArticles_Prefetch'
 		);
 
 		$modules_directory = plugin_dir_path(__FILE__) . 'modules/';

@@ -29,7 +29,7 @@ class WPInstantArticles_Subresource {
 
 	function _wp_head() {
 		foreach(apply_filters('wpinstant_subresources', array()) as $subresource) {
-			echo '  <link rel="subresource" href="'. trim($subresource) .'">';
+			echo '<link rel="subresource" href="'. trim($subresource) .'">';
 		}
 	}
 }

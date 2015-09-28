@@ -10,7 +10,9 @@
 	.cmb2-id-dns-prefetch > .cmb-td,
 	.cmb2-id-prerender-sticky-posts > .cmb-td,
 	.cmb2-id-subresources > .cmb-td,
-	.cmb2-id-subresources-enabled > .cmb-td
+	.cmb2-id-subresources-enabled > .cmb-td,
+	.cmb2-id-prefetch-enabled > .cmb-td,
+	.cmb2-id-prefetch-links > .cmb-td
 	{
 		width: 100%;
 	}
@@ -26,7 +28,8 @@
 	}
 
 	#dns-prefetch_repeat .cmb-td,
-	#subresources_repeat .cmb-td
+	#subresources_repeat .cmb-td,
+	#prefetch_links_repeat .cmb-td
 	{
 		padding-left: 0;
 	}
