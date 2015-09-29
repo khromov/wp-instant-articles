@@ -1,12 +1,12 @@
 === WordPress Instant Articles ===
-Tags: dns-prefetch, prerender, prefetch, seo, speed, optimization, performance, optimize, subresource, html5
+Tags: dns-prefetch, prerender, prefetch, seo, speed, optimization, performance, optimize, subresource, html5, link prefetch
 Requires at least: 4.0
 Tested up to: 4.3.1
 Stable tag: 1.4
 License: GPL2
 Contributors: khromov, titanas
 
-WordPress Instant Articles dramatically improves user experience and site speed. Instant posts with page pre-render, DNS prefetch and HTML5 subresource
+WordPress Instant Articles dramatically improves user experience and site speed with page pre-render, DNS prefetch, Link Prefetch, HTML5 subresource
 
 == Description ==
 
@@ -55,12 +55,16 @@ Page pre-render loads and pre-renders all the assets of the page in a hidden tab
 Learn more about page prerendering here:
 https://www.chromium.org/developers/design-documents/prerender
 
-= What is HTML surecource? =
+= What is HTML5 subrecource? =
 
-Using rel=subresource the browser gets hints about high priority files it needs to load as soon as possible. Critial CSS or JavaScript files are a good example. What rel=subresource does is enabling early loading of resources within the current page.  Because the resource is intended for use within the current page, it must be loaded at high priority in order to be useful.
+Using rel='subresource' the browser gets hints about high priority files it needs to load as soon as possible. Critial CSS or JavaScript files are a good example. This feature enables early loading of resources within the current page.  Because the resource is intended for use within the current page, it must be loaded at high priority in order to be useful.
 
 Learn more about HTML5 subresource here:
 https://www.chromium.org/spdy/link-headers-and-server-hint/link-rel-subresource
+
+= What is Link Prefetch? =
+
+Using rel='prefetch' the broswer gets hints about files that the user might use soon. The browser downloads the files during idle time and stores them in the cache. This feature enables proactive loading of resources the user will need in future pages. CSS or JavaScript files for reviews, gallery and video player plugins are good examples.
 
 == Screenshots ==
 
@@ -69,7 +73,7 @@ https://www.chromium.org/spdy/link-headers-and-server-hint/link-rel-subresource
 == Changelog ==
 
 = 1.4 =
-* Introduce subresource support
+* Introduce Link prefetch support
 * Add new filter for adding custom URLs to subresources list: wpinstant_subresources
 
 = 1.3.1 =
