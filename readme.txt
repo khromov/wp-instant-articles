@@ -74,7 +74,9 @@ Using rel='prefetch' the broswer gets hints about files that the user might use 
 
 = 1.4 =
 * Introduce Link prefetch support
+* wpinstant_prerendered_urls filter now includes previously prerendered items instead of adding to that list.
 * Add new filter for adding custom URLs to subresources list: wpinstant_subresources
+* Add new filter to disable processing of default prerender rules: wpinstant_prerendered_urls_override_defaults
 
 = 1.3.1 =
 * Add new filter for adding custom URLs to prerender: wpinstant_prerendered_urls

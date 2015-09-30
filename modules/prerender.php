@@ -10,33 +10,31 @@
  * Class WPInstantArticles_PreRender
  */
 class WPInstantArticles_PreRender {
+
+	var $prerender_links = array();
+
 	function __construct() {
-		add_action('init', array(&$this, '_init'));
+		add_action('wp_head', array(&$this, '_execute_prerender'), 11);
 	}
 
-	function _init() {
+	function _execute_prerender() {
 
-		add_action('wp_head', array(&$this, '_prerender_filter'), 11);
+		//Make it possible to override the default prerender pages completely
+		$prerender_override = apply_filters('wpinstant_prerendered_urls_override_defaults', false);
 
-
-		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_homepage', false)) {
-			add_action('wp_head', array(&$this, '_prerender_latest_posts'), 11);
+		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_homepage', false) && !$prerender_override) {
+			$this->prerender_links = array_merge($this->prerender_links, $this->_prerender_latest_posts());
 		}
 
-		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_sticky_posts', false)) {
-			add_action('wp_head', array(&$this, '_prerender_sticky_post'), 12);
+		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_sticky_posts', false) && !$prerender_override) {
+			$this->prerender_links = $prerender_links = array_merge($this->prerender_links, $this->_prerender_sticky_post());
 		}
 
-		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false)) {
-			add_action('wp_head', array(&$this, '_prerender_next_previous_single'), 13);
+		if(WPIAC::cmb2_get_option('wpinstant_options', 'prerender_pagination', false) && !$prerender_override) {
+			$this->prerender_links = array_merge($this->prerender_links, $this->_prerender_next_previous_single());
 		}
-	}
 
-	/**
-	 * Prerender any URL:s in wpinstant_prerendered_urls filter.
-	 */
-	function _prerender_filter() {
-		WPInstantArticles_Common::print_prerender_markup(apply_filters('wpinstant_prerendered_urls', array()));
+		WPInstantArticles_Common::print_prerender_markup(apply_filters('wpinstant_prerendered_urls', $this->prerender_links));
 	}
 
 	/**
@@ -56,7 +54,7 @@ class WPInstantArticles_PreRender {
 			$urls[] = get_the_permalink($post->ID);
 		}
 
-		WPInstantArticles_Common::print_prerender_markup($urls);
+		return $urls;
 	}
 
 	/**
@@ -70,6 +68,8 @@ class WPInstantArticles_PreRender {
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		$posts_to_prerender = array();
 
+		$urls = array();
+
 		//If General -> Reading is set to "Your latest posts", piggyback on the main query
 		if(WPInstantArticles_Common::is_valid_latest_posts_request()) {
 			if($paged === 1) {
@@ -77,7 +77,6 @@ class WPInstantArticles_PreRender {
 			}
 		}
 		else if(is_front_page()) { //If General -> Reading is set to "A static page", grab the latest 2 posts
-
 			$latest_posts_query = new WP_Query(array(
 					'post_type' => apply_filters('wpinstant_post_types', array('post')),
 					'posts_per_page' => apply_filters('wpinstant_prerender_number_of_posts', 2)
@@ -89,25 +88,25 @@ class WPInstantArticles_PreRender {
 			//TODO: Handle in prerender-archives.php
 		}
 
-		$urls = array();
 		foreach($posts_to_prerender as $post) {
 			$urls[] = get_the_permalink($post->ID);
 		}
 
-		WPInstantArticles_Common::print_prerender_markup($urls);
+		return $urls;
 	}
 
 	/**
 	 * Prerender next/previous links for single pages
 	 */
 	function _prerender_next_previous_single() {
+		$urls = array();
+
 		if(is_singular()) {
 			// get previous post permalink
 			$prev_post = get_adjacent_post(false, apply_filters('wpinstant_adjacent_post_excluded_terms', ''), false, apply_filters('wpinstant_adjacent_post_taxonomy', 'category'));
 			// get next post permalink
 			$next_post = get_adjacent_post(false, apply_filters('wpinstant_adjacent_post_excluded_terms', ''), true, apply_filters('wpinstant_adjacent_post_taxonomy', 'category'));
 
-			$urls = array();
 			if($prev_post) {
 				$urls[] = get_permalink($prev_post);
 			}
@@ -115,8 +114,8 @@ class WPInstantArticles_PreRender {
 			if($next_post) {
 				$urls[] = get_permalink($next_post);
 			}
-
-			WPInstantArticles_Common::print_prerender_markup($urls);
 		}
+
+		return $urls;
 	}
 }
