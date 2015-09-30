@@ -14,12 +14,12 @@ class WPInstantArticles_Prefetch {
 			add_action('wp_head', array(&$this, '_wp_head'), 10);
 		}
 
-		add_filter('wpinstant_prefetch_links', array(&$this, 'subresources'));
+		add_filter('wpinstant_prefetch_links', array(&$this, 'links'));
 	}
 
-	function subresources($domains) {
+	function links() {
 
-		$subresources = array();
+		$links = array();
 		foreach (WPIAC::cmb2_get_option('wpinstant_options', 'prefetch_links', array()) as $link) {
 			$links[] = esc_url($link);
 		}
